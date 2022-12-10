@@ -87,6 +87,7 @@
             - Used to Mount the DOM from Component on UI Thread              
 # Programming Concepts with React
     -  Creating Components
+        - A Custom HTML Element that will be implicitly registered on UI Thread as a Element by React Object Model 
         - State and Props
             - useState()
             - useEfect() for ajax calls
@@ -110,3 +111,22 @@
     - Working with Redux
     - Performing Unit Testing        
                 
+# React.js Core Concepts
+- Statefull Component
+    - A Component that has a local mutable values those are scopped within the Component itself
+        - They are defined as 'State Properties' using 'useState' Hook
+        - When the component is unmounted the state property will also be killed or released
+    - A Component that accepts immutable values from its parent component
+        - They are passed to child from parent using 'props' object  
+        - The 'props' object is a JavaScript literal which contains Key:Value pairs for the data that is received from parent to child component also emitted from child to parent    
+        - The 'props' data will be available till the parent component is live
+    - The 'useState(initialState, Dispatch<SetStateAction>)'
+        - Used to define a State Property (aka Object) with 'initialState' and 'State Update Callback Function' that will be dispated using 'Dispatch<SetStateAction>' object
+        - TO update the state, the state property MUST be bound with UI element of which event will be responsible to Dispatch the action that execute 'State Uopdate Callback function' to update the state property from intital to final      
+            - e.g.
+                const [x,setX] = useState(0);
+                    - x is state property
+                    - setX() is a callbak function will be dispatched to update 'x'
+    - Component Creation Practices
+        - Make sure that if the UI is repetating across same component as well as the same UI is required across multiple component then consider creating a reusable component
+        - Instead of declaring separate state properties consider defining a ES class with public proeprties in it and define a state using this class instance. You can also create a JSON object for the same                  
