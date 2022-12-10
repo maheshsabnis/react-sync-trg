@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# CReate a React Project
+    - npm install --global create-react-app
+        - create-react-app, a CLI for Creation Production Ready React App
+            - React CLI for
+                - Build
+                - Test
+                - Run
+    - CReate a Project
+        - create-react-app [PROJECT-NAME]
+            - react
+            - react-dom
+            - react-scripts
+                - React CLI Package for Build, Test and Run
+            - Testing Packages with Jest Integration    
+                - @testing-library/jest-dom
+                - @testing-library/react
+                - @testing-library/user-event
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Folder Structure
+    - package.json
+        - File with all dependency packages
+    - src folder
+        - Contains all source code file for following
+            - Compoents
+            - Services
+            - Models
+            - Utilities
+    - public folder
+        - The Production Files
+            - index.html, the DOM that will be mounted in browser
+# React.js Object Models
+    - Component
+        - Autonomous Object that contains
+            - User Interface with Compiled JSX
+            - State Properties to Bind Data with UI Elements
+            - Methods, those are executed when events are raised on UI Elements
+        - Component Types
+            - The 'Class Component', a Traditional ES 6 approach for Creating React Component that is derived from Component<P,S> base class
+                - This contains Lifecycle Methods for effectively managing the Component execution once it is Mounted on UI THread
+                    - constructor()
+                        - Contains State Properties declaration using the 'state' object with initial Values
+                    - shouldComponentUpdate()    
+                        - Check if the state is changed so that component can be updated 
+                    - componentWillUpdate()
+                        - If the shouldComponentUpdate() retuirns treue then new Vitrual DOM is created
+                    render()
+                        - Mount the UI on Browser UI Thread    
+                    - componentDidCatch()
+                        - Method to render a fallback view when the child compoennt crash    
+                    - componentDidMount()
+                        - Executed after the render() completes its execution and this contains resource-intensice code e.g. Ajax calls
+                        - This may resule in component's properties update and agsin calls
+                            - shouldComponentUpdate()
+                            - componentWillUpdate()
+                            - render()
+            - The 'Functional Component', from React 16+ (Recommended)
+                - A JavaScript Function that returns the DOM
+                - No Lifecycle method explicitly available
+                - No explicit declation of the 'state' object for declaring state properties                    
+                - The React 16.8+ use 'React Hooks' for State, Lifecycle, Data Communication across components, State updates, etc.
+                    - useState()
+                        - Declare and Update State with fix type
+                    - useEffect()
+                        - Manage resource intensive operations and State updates
+                    - useContext()
+                        - Share data across components
+                    - useReducer()
+                        - State update with 'State Transition'
+                        - From Initial to Final Value when the type of final value is not known
+                    - useRef()
+                        - Reference for DOM
+                    - ... and many more
+                - Hooks are JavaScript functions with predefined behavior taht is configured for React Functional components    
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    - react
+        - provides 'React' class
+        - Following Types
+            - Component<P,S>
+                - The base class for all components
+                - The 'P' is props
+                - The 'S' is state
+            - PureComponent
+                - A Specially defined Component base class to Performance improvisation   
+                    - does not innoke the shouldComponentUpdate() method              
+    - react-dom
+        - Provides 'ReactDOM' class  
+            - Used to Mount the DOM from Component on UI Thread              
+# Programming Concepts with React
+    -  Creating Components
+        - State and Props
+            - useState()
+            - useEfect() for ajax calls
+            - useReducer() for state transition
+            - Data Validations
+        - Parent Child Components
+            - Reusable Components  
+                - using props for pass data from Parent to Child
+                - emit and event from child to parent
+            - using React.Context
+                - data communicaiton across component
+                - Events across components 
+    - Error Handling with Components aka Error Boundary
+        - Use the class component    
+        - componentDidCatch()
+    - Portals
+    - Using Fragments
+    - Routing
+        - Lazy Loading with fallback
+    - Code-Splitting and load code asynchronously on UI         
+    - Working with Redux
+    - Performing Unit Testing        
+                
