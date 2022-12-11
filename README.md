@@ -129,4 +129,24 @@
                     - setX() is a callbak function will be dispatched to update 'x'
     - Component Creation Practices
         - Make sure that if the UI is repetating across same component as well as the same UI is required across multiple component then consider creating a reusable component
+            - Increase Reusability of the Component(s) by distributing them across various container/parent component (Composable UI)
+                - Plan for the UI requirements of the Reusable Component
+                - Carefully declare state properties for the component OR plan for what data this component will accept from its parent using 'props'
+                    - a property that will be used to generate HTML UI dynamically for child component 
+                    -  a property  that will be responsible for handing 'One-way' data flow from parent to child component (Optional)
+                        - This will be mandatory if the custom component is used for data binding and data updates from parent to child component and child to parent 
+                - Plan on the events that will be responsible for emitting data from this child component to its parent
+                    - Raise an event in child and let the parent subscribe to it 
+                    - This event subscription will be implemented using 'props' 
+            - IMP**
+                - Make sure that each property received by the ReUsable component is validated, this will pevent the component crashing      
+        - Using 'Context'
+            - props are passed manually from parent to child and thet are scopped to child but since props is live throught the UI Thread, these properties are alos avalilable
+            - Instead the 'React.Context' is better approach to manage the data 'globally' and it is possible to make that data available only for the component who wants to use it
+            - const Context = React.createContext();
+                - CReate a Context
+            - Context.Provider, this is 'value' property to create key:value pair for the data to be provider to children componants.
+                - The 'value' is 'complex-json' object  
+                    - {}, {{}}, {{{}}} 
+            - Context.Consumer, the 'useContext' Hook is used by child component to sunscribe to Context and read data stored in 'value' property                        
         - Instead of declaring separate state properties consider defining a ES class with public proeprties in it and define a state using this class instance. You can also create a JSON object for the same                  

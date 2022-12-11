@@ -9,6 +9,7 @@ import App from './App';
 import FirstComponent from './components/firstcomponent/firstcomponent';
 import ParentPropsComponent from './components/statecomponent/propscomponent';
 import ExpensesComponent from './components/expensescomponent/expensescomponent';
+import ExpensesContextComponent from './components/expensescontectcomponent/expensescontextcomponent';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -25,7 +26,7 @@ let msg = 'Hello!! from Root';
 // the value for this property will be set using 'props' object
 root.render(
   <React.StrictMode>
-    <ExpensesComponent/>
+    <ExpensesContextComponent/>
   </React.StrictMode>
 );
 

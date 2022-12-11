@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {ExpensesHeaders, PaymentModes} from './../../models/constants';
-import {Expenses} from './../../models/expenses';
-import SelectComponent from "../reusablecomponent/selectcomponent";
-const ExpensesComponent=()=>{
+import {ExpensesHeaders, PaymentModes} from '../../models/constants';
+import {Expenses} from '../../models/expenses';
+import SelectContextEventComponent from "../reusablecomponent/selectcontexteventcomponent";
+import {DataContext} from './../DataContext';
+ 
+const ExpensesContextComponent=()=>{
    // define state
    const [expense, setExpense] = useState({
     ExpenseId:0, ExpenseDetails:'',PaidTo:'',PaidAmount:0,ExpensesHeader:'',PaymentMode:''
@@ -30,9 +32,21 @@ const ExpensesComponent=()=>{
     setExpense(record);
    }
 
+   // Following 2 methods wil be lionked with the
+   // DataContext so that the child compoennt
+   // will directly subscribe to these methods
+   // and execuet these methdo on event raised inside
+   // child component 
+   const getExpenseHeader=(val)=>{
+     setExpense({...expense, ExpensesHeader: val});
+   };
+   const getPaymentMode=(val)=>{
+    setExpense({...expense, PaymentMode:val});
+  }; 
+
     return(
         <div className="container">
-            <h2>The Expenses Management App</h2>
+            <h2>The Expenses Management App using Context</h2>
             <div className="form-group">
                 <label>Expenses Id</label>
                 <input type="text" className="form-control"
@@ -66,42 +80,26 @@ const ExpensesComponent=()=>{
             </div>
             <div className="form-group">
                 <label>Expenses Header</label>
-                {/* <select className="form-control"
-                 value={expense.ExpensesHeader}
-                 onChange={(evt)=>setExpense({...expense, 
-                  ExpensesHeader:evt.target.value})}
-                >
-                    <option>Select Expenses Header</option>
-                    {
-                        expensesHeaders.map((eh,i)=>(
-                            <option key={i} value={eh}>{eh}</option>
-                        ))
-                    }    
+                {/* <DataContext.Provider value={expensesHeaders}>
+                    
+                    <SelectContextComponent></SelectContextComponent>
+                </DataContext.Provider> */}
 
-                </select> */}
-                <SelectComponent dataSource={expensesHeaders}
-                 valueProperty={expense.ExpensesHeader}
-                 onSelectionChanged={(val)=>setExpense({...expense, ExpensesHeader:val})}/>
+                <DataContext.Provider value={{expensesHeaders, getExpenseHeader}}>
+                    {/* The Child Component */}
+                    <SelectContextEventComponent></SelectContextEventComponent>
+                </DataContext.Provider>
             </div>
             <div className="form-group">
                 <label>Payment Mode</label>
-                {/* <select className="form-control"
-                 value={expense.PaymentMode}
-                 onChange={(evt)=>setExpense({...expense, 
-                  PaymentMode:evt.target.value})}
-                >
-                    <option>Select Payment Mode</option>
-                    {
-                        paymentModes.map((pm,i)=>(
-                            <option key={i} value={pm}>{pm}</option>
-                        ))
-                    }  
+                {/* <DataContext.Provider value={paymentModes}>
+                    
+                    <SelectContextComponent></SelectContextComponent>
+                </DataContext.Provider> */}
 
-                </select> */}
-                <SelectComponent dataSource={paymentModes}
-                 valueProperty={expense.PaymentMode}
-                 onSelectionChanged={(val)=>setExpense({...expense, PaymentMode:val})}
-                 />
+                <DataContext.Provider value={{paymentModes, getPaymentMode}}>
+                    <SelectContextEventComponent></SelectContextEventComponent>
+                </DataContext.Provider>
             </div>
             <div className="form-group">
                <button className="btn btn-warning" onClick={clear}>Clear</button>
@@ -137,4 +135,4 @@ const ExpensesComponent=()=>{
     );
 };
 
-export default ExpensesComponent;
+export default ExpensesContextComponent;
