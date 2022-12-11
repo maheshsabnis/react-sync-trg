@@ -184,3 +184,30 @@
                 logic that will be executed for componentWillUnMount
             })
         });
+        - useEffect(effect: EffectCallback, deps?: DependencyList)
+            - EffectCallback
+                - Callback function that has following 2 responsibilities
+                    - EffectCallback = () => (void | Destructor)
+                        - This is a TuypeScript Uniion Types, this means a variable can be declared using multiple types
+                            - The 'void' is the function that doe not return any value
+                                - This function will continue execution
+                                - For the First Execution of theis function function, the state will be updated and rendering will be executed on DOM
+                                - Since the render will continue for each state update, we have to make sure that the useEffet() stop its execution after the first execution and its coresponding state update
+                                - USe the DependencyList for stopping an execution of useEffct()
+                            - The Destructor, means that the function will be returning an object that will release all resources 
+                                - USe this to release or destroy any HTTP handler object
+                                - Use this to release or unsubscribe any event that is registered for the current component
+                        -  DependencyList
+                            - It is a readonly array that contains list of all state properties for current component and its update dispatches
+                            - THis will make sure that the uesEffect() will stop when the state is updated and DOM is rendered with state udpates     
+- Error Boundaries
+    -  Create a Application Level Component that act as a Parent Component for all other children component to listen and handle errors raise on any of the child component 
+    - This can be possible only by using 'Class COmponents'
+        - implement 'componentDidCatch(error, log)' funciton to listen to catch
+            - error : actual error 
+            - log: used to generate statckTrace in browser
+        - implement the 'getDerivedStateFromError(error)' a static property that will update the state of the ErrorCoundary compoenent and will help in printing the error message
+- Portal
+- Creating Custom Hooks
+- Single Page App
+- Redux                            

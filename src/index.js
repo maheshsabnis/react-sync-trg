@@ -10,6 +10,10 @@ import FirstComponent from './components/firstcomponent/firstcomponent';
 import ParentPropsComponent from './components/statecomponent/propscomponent';
 import ExpensesComponent from './components/expensescomponent/expensescomponent';
 import ExpensesContextComponent from './components/expensescontectcomponent/expensescontextcomponent';
+import ExpensesAjaxComponent from './components/expensesajaxcomponent/expensesajaxcomponent';
+import ToggleComponent from './components/lifecyclehooks/togglecomponent';
+import ContainerComponent from './components/errorboundaries/errorboundariescomponent';
+import MyContainerErrorBoundaryComponent from './components/errorboundaries/actualerrorboundariescomponent';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -26,7 +30,7 @@ let msg = 'Hello!! from Root';
 // the value for this property will be set using 'props' object
 root.render(
   <React.StrictMode>
-    <ExpensesContextComponent/>
+    <MyContainerErrorBoundaryComponent/>
   </React.StrictMode>
 );
 
