@@ -5,7 +5,7 @@
 
 # Day 2 Date: 11-Dec-2022
 
-1. Modify the 'SelectContextEventComponent' to ame sure that, when the 'Clear' button is clicked, the selected values for 'SelectContextEventComponent' are cleared.
+1. Modify the 'SelectContextEventComponent' to make sure that, when the 'Clear' button is clicked, the selected values for 'SelectContextEventComponent' are cleared.
 2. Create a DataGridComponent using HTML Tabkle with following guidelines
     - Use React.Context to pass following values from parent to DataGridComponent
         - A Collection using which tyhe DataGridComponent will generate Rows and Columns   
