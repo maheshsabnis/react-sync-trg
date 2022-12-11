@@ -1,0 +1,11 @@
+Create Database ExpensesReports;
+
+Create Table Expenses (
+    
+    ExpensesId int Identity Primary Key,
+    ExpensesDetails varchar(1000) Not Null,
+    PaidTo varchar(100) Not Null,
+    PaidAmount int Not Null,
+    ExpensesHeader varchar(200) Not Null, 
+    PaymentMode varchar(200) Not Null
+)

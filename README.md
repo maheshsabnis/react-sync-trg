@@ -149,4 +149,38 @@
                 - The 'value' is 'complex-json' object  
                     - {}, {{}}, {{{}}} 
             - Context.Consumer, the 'useContext' Hook is used by child component to sunscribe to Context and read data stored in 'value' property                        
-        - Instead of declaring separate state properties consider defining a ES class with public proeprties in it and define a state using this class instance. You can also create a JSON object for the same                  
+        - Instead of declaring separate state properties consider defining a ES class with public proeprties in it and define a state using this class instance. You can also create a JSON object for the same                 
+    - Performing AJAX Calls
+        - USe Promise based library
+            - npm install --save axios
+        - This package has 'axios' object that contains following methods
+            - get(url, AxiosRequestConfig):Promise<R>
+            - post(url,data,AxiosRequestConfig):Promise<R>
+            - put(url,data,AxiosRequestConfig):Promise<R>
+            - delete(url,AxiosRequestConfig):Promise<R>
+        - AxiosRequestConfig
+            - The Object that contais or defines Request Configration to external Services                 
+                - headers
+                    - Header Info e.g.
+                        - content-type
+                        - authorization
+                        - version
+                        - custom-headers
+        - data
+            - The data to be posted (create news) or put (update existing) towards the REST API       
+            - mostly this is JSON data    
+        - HTTP 2
+            - Text, Xml, Json, BLOB, ArrayBuffer          
+- Lifecycle
+    - initialRender Of class component is execution for functional component
+    - propsChange of class component is propsChange same for functional component
+    - stateChanges of class component is 'useState() plues event dispatch()' for functional component            
+    - render() of class component is return() for functional component
+    - componentDidMount() and componentWillUnmount() of class component are combined in 'useEffect()' hook of functional component
+        - useEffect(()=>{
+            logic for componentDidMount
+
+            return(()=>{
+                logic that will be executed for componentWillUnMount
+            })
+        });
