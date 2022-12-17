@@ -13,3 +13,10 @@
         - A 'CanSort' property, this is boolen
         - A 'SortKey' property, this will be the name of the property based on which the DataGridComponent will show data in sorted order when its shows collection in it. The sorting will be performed by DataGridComponent only when 'CanSort' is true
         - (Optional) A 'pageSize' property, based on this the DataGridComponent will generate paginated UI  with data shown per page based on the value of 'pageSize'
+
+# Day 3: Date:17-Dec-2022
+
+1. Create a Higher-Order-Component, that will be used to configure following features
+    - A Button to Sort / Reverse each columns when a Parent components wants to set 'canSort' property as 'true'
+    - Apply alternate colors for Table Rows when 'alternatingColor' property is set to 'true' by the parent
+    - Apply CSS on hover event of mouse on table row to change the background color of Table row when the 'isHoveringEffect' proeprty is set to 'true'  by parent   

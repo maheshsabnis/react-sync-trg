@@ -17,6 +17,8 @@ import ContainerComponent from './components/errorboundaries/errorboundariescomp
 import MyContainerErrorBoundaryComponent from './components/errorboundaries/actualerrorboundariescomponent';
 import MainRoutingComponent from './reoutingapp/mainroutingcomponent';
 import CustomHookUserComponent from './components/customhooks/customhookusercomponent';
+import UseReducerComponent from './components/usereducercomponent/useReducerComponent';
+import LazyComponent from './components/lazyloading/lazyloadcomponent';
 // Using HOC
 
 import { Companies, Stocks } from './models/constants';
@@ -24,6 +26,8 @@ import CompanyComponent from './components/hoc/companycomponent';
 import StockComponent from './components/hoc/stockcomponent';
 import HocComponent from './components/hoc/hoccomponent';
 import reportWebVitals from './reportWebVitals';
+import CodeSplitComponent from './components/codesplitting/codesplitcomponent';
+
 
 let companies = Companies;
 // Local a HTMl element on idnex HTML which will
@@ -53,7 +57,7 @@ root.render(
            <hr/>
            <StockHComponent/>
         </div> */}
-        <CustomHookUserComponent/>
+        <CodeSplitComponent/>
        
   </React.StrictMode>
 );

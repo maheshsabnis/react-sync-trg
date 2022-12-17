@@ -255,5 +255,35 @@
                         - This is a complex object that has following properties
                             - type: the action that is dispatched
                             - payload: the result of the action which is dispatched. This payload is the new value that is mutated (aka updated) in the state object 
-            -  intialState, a complex object that is initial value, state transition, final value, and the error value               
+                - The reducer function MUST not have any alogic, instead it MUST work for state transitons             
+            -  intialState, a complex object that is initial value, state transition, final value, and the error value              
+```` javascript
+function useReducer<R extends Reducer<any, any>>(
+        reducer: R,
+        initialState: ReducerState<R>,
+        initializer?: undefined
+    ): [ReducerState<R>, Dispatch<ReducerAction<R>>];
+
+````
+
+    - reducer: reducer function
+    - initialState: the initial state which will be updated
+    - ReducerState: the state object that will be updated in transitions based on dispatch
+    - Dispatch: An action that will be executed based on either user intraction or any-other resource intensive execution e.g. Ajax calls with Promise object  
+        - ReducerAction: The action type that will decide the payload data that will be updated in the state object
+
+- Split the UI and Logic of the Front-End App across
+    - Various Reusable Components
+    - Various JS Classes contating utility logic
+    - The LazyLoading 
+        -  Used if the Child component has resource intensive operations under execution and that may delay the rendering time of the child component
+        - The LAzy Loading will be sued by parent to create a fallback UI for such delyed components
+        - The 'Suspense' component container in 'react' library
+            - the 'facllback' proeprty of the Suspense will have the fallback UI loaded in parent till the actual component is not loaded
+        - React.lazy(), a method that is used to lazy load the component
+            - This is generally used when third-party components are needed by your application    
+    - The Code-Splitting      
+        - This is used when there are several JS Modules are loaded in browser
+        - THis is used to load the JS module asynchronously
+        - import("MODULE_FILE_PATH").then(SUCCESS).catch(error)     
 - Redux                            
