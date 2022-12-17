@@ -24,6 +24,7 @@ const MainRoutingComponent=()=>{
                     <Route path="/edit/:paidto" element={<EditExpensesComponent/>}/>
                     <Route path="*" element={<NotfoundComponent/>}/>
                 </Route>
+                
             </Routes>
         </div>
     );

@@ -49,15 +49,15 @@ const StockHComponent = HocComponent(StockComponent, Stocks);
 // the value for this property will be set using 'props' object
 root.render(
   <React.StrictMode>
-      {/* <BrowserRouter>
+      <BrowserRouter>
          <MainRoutingComponent/>
-      </BrowserRouter> */}
+      </BrowserRouter>
         {/* <div>
            <CompanyHComponent/>
            <hr/>
            <StockHComponent/>
         </div> */}
-        <CodeSplitComponent/>
+        {/* <CodeSplitComponent/> */}
        
   </React.StrictMode>
 );
