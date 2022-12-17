@@ -10,6 +10,11 @@ export class ExpensesHttpService {
         return response;
     }
 
+    async getNewExpenses(url){
+        let response = await axios.get(url);
+        return response;
+    }
+
     async postExpenses(expense){
         let response = await axios.post(this.url, expense, {
             headers:{

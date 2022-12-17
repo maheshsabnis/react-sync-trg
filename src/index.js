@@ -1,6 +1,7 @@
 // Standard imports
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter} from 'react-router-dom';
 // importing CSS
 import './index.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -14,9 +15,17 @@ import ExpensesAjaxComponent from './components/expensesajaxcomponent/expensesaj
 import ToggleComponent from './components/lifecyclehooks/togglecomponent';
 import ContainerComponent from './components/errorboundaries/errorboundariescomponent';
 import MyContainerErrorBoundaryComponent from './components/errorboundaries/actualerrorboundariescomponent';
+import MainRoutingComponent from './reoutingapp/mainroutingcomponent';
+import CustomHookUserComponent from './components/customhooks/customhookusercomponent';
+// Using HOC
+
+import { Companies, Stocks } from './models/constants';
+import CompanyComponent from './components/hoc/companycomponent';
+import StockComponent from './components/hoc/stockcomponent';
+import HocComponent from './components/hoc/hoccomponent';
 import reportWebVitals from './reportWebVitals';
 
-
+let companies = Companies;
 // Local a HTMl element on idnex HTML which will
 // be used as 'root' element to MOUNT the react component
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,11 +35,26 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // Thsi will be managed usig JSX
 
 let msg = 'Hello!! from Root';
+
+// the Hoc In Practice
+const CompanyHComponent = HocComponent(CompanyComponent, Companies, {canDelete:true});
+const StockHComponent = HocComponent(StockComponent, Stocks);
+
+
 // message : a custom property that will be created by JSX for the component
 // the value for this property will be set using 'props' object
 root.render(
   <React.StrictMode>
-    <MyContainerErrorBoundaryComponent/>
+      {/* <BrowserRouter>
+         <MainRoutingComponent/>
+      </BrowserRouter> */}
+        {/* <div>
+           <CompanyHComponent/>
+           <hr/>
+           <StockHComponent/>
+        </div> */}
+        <CustomHookUserComponent/>
+       
   </React.StrictMode>
 );
 

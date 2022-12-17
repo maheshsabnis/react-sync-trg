@@ -209,5 +209,51 @@
         - implement the 'getDerivedStateFromError(error)' a static property that will update the state of the ErrorCoundary compoenent and will help in printing the error message
 - Portal
 - Creating Custom Hooks
+    - The React Hooks can be executed only at Functional Component level
+    - We cannot call them/ use them inside other function, except the custom hook is not created
 - Single Page App
+    - React ROuter DOM
+        - 'Client-Side-Routing'
+            - Manages navigation across all components w/o making a new request to laod the component
+            - Instead, the component is loaded from Client
+            - This improves the Rendering speed, this does not need re-evaluation of JavaScript and CSS
+        - React Router DOM V6
+            - 6.2 / 6.4
+                - SUpport for Hooks from V6
+            - Routes
+                - Acts as a colleciton of Route
+            - Route
+                - An Expression that has following properties
+                    - path, the URL
+                    - element, the Component's DOM Name
+                    - index, the landing page
+            - Link
+                - a Mechanism to query to Routes
+                - 'to', accepts the URL for query
+            - Outlet
+                - The container to render Components as DOM Element
+            - useNavigate
+                - Naigate across Components using URL 
+            - useParams
+                - responsible to read route parameters    
+            - BrowserRouter
+                - COnatier for the React-Router-DOM with following responsibilities
+                    - Manage the Routes, a collection of routes
+                        - path and element for React Component navigation
+                    - Query to the route collection using the link that accepts the 'path' as input
+                    - Search the component and mount  it in 'outlet'                   
+- useReducer
+    - This hook is responsible to perform state updates based in state transition
+        - Initial State, Success State , Failure State
+    - Use useReducer() hook instead of useState() when the state property is having an external dependency for value updates
+    - Syntax
+        - useReducer(reducer, intialState)
+            - reducer 
+                - a JS Pure Function that accepts following parameters
+                    - Parameters 1: the 'state', the object thatb is to be changed
+                    - Parameter 2: the 'action', the action that is dispatched that cause the state to be changed
+                        - This is a complex object that has following properties
+                            - type: the action that is dispatched
+                            - payload: the result of the action which is dispatched. This payload is the new value that is mutated (aka updated) in the state object 
+            -  intialState, a complex object that is initial value, state transition, final value, and the error value               
 - Redux                            
