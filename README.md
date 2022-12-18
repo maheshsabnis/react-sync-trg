@@ -286,4 +286,35 @@ function useReducer<R extends Reducer<any, any>>(
         - This is used when there are several JS Modules are loaded in browser
         - THis is used to load the JS module asynchronously
         - import("MODULE_FILE_PATH").then(SUCCESS).catch(error)     
-- Redux                            
+- Redux     
+    - Concepts
+        - State Management
+            - store: a global/application state container
+            - action: an object that will be responsible to dispatch an event request from UI
+                - The action may have an input pareameter
+                - The action will have an output paraneter as object
+                    - { type: OUTPUT_ACTION, payload:THE_OUTPUT_STATE }
+                - asction may be synchropnous or async     
+            - reducer: a pure function that listen to each action and acordingly update the stote with new state
+                - this function has tow parameters
+                    - state: Initial State /  previous state / old state
+                    - action: the action output object
+                        - { type: OUTPUT_ACTION, payload:THE_OUTPUT_STATE }
+                        - based on OUTPUT_ACTION the store will be updated with THE_OUTPUT_STATE
+                - one reducer function can call other reducer function
+                - the reducer function MUST not have complex or time-consuming logic        
+    - Packages
+        - redux
+            - createStore(), a method tat is used to create a store
+                - createStore(reducer, enhancer);
+                    - reducer is reducer function
+                    - enhancer, is an obejct that will simulate the execution  of reduct in browser (NOT RECOMMENDED IN PRODUCTION)
+            - combineReducers(), a method that will combine all reducer functions into a single reducer function
+                - const reduecers = combineReducers({reducerfn1, reducerfn2,...});
+        - react-redux
+            - The 'Provider' is a container component that will connect the react with redux
+                - The provider will load the store at application level so that all components can access it
+            - useDispatch()
+                - A hook that is used to dispatch an action from UI (component)
+            - useSelector()
+                - A Hook that is used to subscribe to store so that data from the store can be queried and made available to UI (Component)    
