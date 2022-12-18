@@ -311,6 +311,13 @@ function useReducer<R extends Reducer<any, any>>(
                     - enhancer, is an obejct that will simulate the execution  of reduct in browser (NOT RECOMMENDED IN PRODUCTION)
             - combineReducers(), a method that will combine all reducer functions into a single reducer function
                 - const reduecers = combineReducers({reducerfn1, reducerfn2,...});
+            - applyMiddleware method
+                - Used for load the middleware required by the redux at application level when the store is created
+                - createStore(reducers, applyMiddleware(MIDDLEWARE))
+                    - MIDDLEWARE
+                        - Saga
+                        - Thunk 
+
         - react-redux
             - The 'Provider' is a container component that will connect the react with redux
                 - The provider will load the store at application level so that all components can access it
@@ -318,3 +325,25 @@ function useReducer<R extends Reducer<any, any>>(
                 - A hook that is used to dispatch an action from UI (component)
             - useSelector()
                 - A Hook that is used to subscribe to store so that data from the store can be queried and made available to UI (Component)    
+- Using Saga Middleware
+    - A Middleware that is responsible for managing Async calls
+    - packages
+        - 'saga'
+            - Base object Model for providing the generator functions for managing sequence for response received from the ajax calls
+        - 'redux-saga'
+            - Provides various operators using which async operations can be managed and based on that the response can be organized to dispatch output actions             
+            - 'createSagaMiddleware()' a function that is used to instantiate a MIDDLEWARE object so that it can be loaded at application level using 'applyMiddleware()' method      
+                - This middleware instance has the 'run()' method to run the middleware at application level so that all actions those are dispatched from SAGA are monitored so that the 'reducer' can listen to it to update store
+            - redux-saga/effects
+                - Operator Methods
+                    - call()
+                        - initiate a call for async operations
+                        - this retuns a resolved promise object
+                    - put()
+                        - responsible to dispatch an output action
+                        - put({type:'OUTPUT_ACTION',payload})        
+                    - take/takeLatest/takeEvery
+                        - operator metod for lisenint and handling the action that is dispatched    
+                    - all()
+                        - execute generator funciton(s) by loading them at application level when the saga is applied on the store using 'applyMiddleware()' and 'createSagaMiddleware()'. This will make sure that for each action dispatched from the component (UI) the corresponding generator function from SAGA middleware will be executed and output action is dispatched       
+    - UI--> Dispatch Action ---> Action is Async ---> Saga Middleware wil all() method will execute Generator Function ---> Make async call using call() method ---> The resolve promise object with data will be received by call() method ---> The put() method will dispatch output action with type and payload ---> This output action will be listen by reducer ---> reducer will update state in store based on data received from output action ---> since UI is subscribed with store the data will be shown on UI                     
