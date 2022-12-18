@@ -1,11 +1,17 @@
 import React, {useState} from "react";
+import {useDispatch}  from 'react-redux';
 import {ExpensesHeaders, PaymentModes} from './../../models/constants';
 import {Expenses} from './../../models/expenses';
 import SelectComponent from "./../../components/reusablecomponent/selectcomponent";
+
+import { addExpense } from "../actions/actions";
+
+
 const AddExpensesComponent=(props)=>{
    // define state
    const [expense, setExpense] = useState({
-    ExpenseId:0, ExpenseDetails:'',PaidTo:'',PaidAmount:0,ExpensesHeader:'',PaymentMode:''
+    ExpensesId:0, ExpensesDetails:'',PaidTo:'',PaidAmount:0,
+    ExpensesHeader:'',PaymentMode:''
    });
     
    // lets locally store array values
@@ -13,25 +19,26 @@ const AddExpensesComponent=(props)=>{
    let paymentModes  = PaymentModes;
    let exp = new Expenses();
 
+   // declare dispatch object
+
+   const dispatch = useDispatch();
+
+
    const clear=()=>{
     // Initialise the State
      setExpense({
-        ExpenseId:0, ExpenseDetails:'',PaidTo:'',
-        PaidAmount:0,ExpensesHeader:'',PaymentMode:''
+        ExpensesId:0, ExpensesDetails:'',PaidTo:'',PaidAmount:0,
+        ExpensesHeader:'',PaymentMode:''
        })
    };
    // save new expense in Array
    const save=()=>{
-     // the 'save()' methdo will be invoked on 'onClick' event
-     // this will make sure that the AddExpenses() function will be sunscribed
-     // by the parent of the current component
-     props.AddExpenses(expense);
+       // dispatch the action
+       dispatch(addExpense(expense)); 
   };
 
 
-   const getSelectedExpense=(record)=>{
-    setExpense(record);
-   }
+    
 
     return(
         <div className="container">
@@ -39,17 +46,17 @@ const AddExpensesComponent=(props)=>{
             <div className="form-group">
                 <label>Expenses Id</label>
                 <input type="text" className="form-control"
-                   value={expense.ExpenseId}
+                   value={expense.ExpensesId}
                    onChange={(evt)=>setExpense({...expense, 
-                    ExpenseId:parseInt(evt.target.value)})}
+                    ExpensesId:parseInt(evt.target.value)})}
                 />
             </div>
             <div className="form-group">
                 <label>Expenses Details</label>
                 <input type="text" className="form-control"
-                 value={expense.ExpenseDetails}
+                 value={expense.ExpensesDetails}
                  onChange={(evt)=>setExpense({...expense, 
-                  ExpenseDetails:evt.target.value})}/>
+                  ExpensesDetails:evt.target.value})}/>
             </div>    
             <div className="form-group">
                 <label>Paid To</label>

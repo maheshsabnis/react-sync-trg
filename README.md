@@ -343,7 +343,7 @@ function useReducer<R extends Reducer<any, any>>(
                         - responsible to dispatch an output action
                         - put({type:'OUTPUT_ACTION',payload})        
                     - take/takeLatest/takeEvery
-                        - operator metod for lisenint and handling the action that is dispatched    
+                        - operator metod for lisening and handling the action that is dispatched    
                     - all()
                         - execute generator funciton(s) by loading them at application level when the saga is applied on the store using 'applyMiddleware()' and 'createSagaMiddleware()'. This will make sure that for each action dispatched from the component (UI) the corresponding generator function from SAGA middleware will be executed and output action is dispatched       
     - UI--> Dispatch Action ---> Action is Async ---> Saga Middleware wil all() method will execute Generator Function ---> Make async call using call() method ---> The resolve promise object with data will be received by call() method ---> The put() method will dispatch output action with type and payload ---> This output action will be listen by reducer ---> reducer will update state in store based on data received from output action ---> since UI is subscribed with store the data will be shown on UI                     

@@ -20,3 +20,9 @@
     - A Button to Sort / Reverse each columns when a Parent components wants to set 'canSort' property as 'true'
     - Apply alternate colors for Table Rows when 'alternatingColor' property is set to 'true' by the parent
     - Apply CSS on hover event of mouse on table row to change the background color of Table row when the 'isHoveringEffect' proeprty is set to 'true'  by parent   
+
+# Day 4: Date:18-Dec-2022
+
+1. Modify the AddExpensesComponent so that when the new expenses is recorded wherever the expenses id is generated that must be shown in the ExpenseId TextBox
+2. Modify the Saga for Update and Delete Generators as well as modify the reducer for Update and Delete action methods.
+3. Modify the ExpensesListomponent to dispatch Update and Delete Action Methods and update the store  
